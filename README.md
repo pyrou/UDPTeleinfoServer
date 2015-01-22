@@ -6,12 +6,15 @@ UDP server that is listening for raw "Teleinfo" (EDF) datagrams
 
 `UDPTeleinfoServer.py` can be used standalone to decode and print out received "Teleinfo" datagrams
 
-```bash
+```text
 Usage: python ./UDPTeleinfoServer.py [-p <port>] [-H <host>]
 
 Options:
   -p, --port     Specify on which port the server is listening
   -H, --host     Specify on which host the server is listening
+  -w, --wait     Time in seconds to wait between reading two datagrams. During
+                 the wait time, datagrams received are dropped. The default
+                 value is 0
 ```
 
 ## Example
@@ -19,10 +22,11 @@ Options:
 On the server, run foolowing command :
 
 ```bash
-# python ./UDPTeleinfoServer.py -p 8000
+# python ./UDPTeleinfoServer.py -p 8000 -w 5
 ```
 
-Server is now listening incomming datagrams on port `8000`
+Server is now listening incomming datagrams on port `8000`. 
+However, it will only handle one request per 5 seconds.
 
 To test the server, try this command on any machine on the same LAN
 
@@ -34,10 +38,10 @@ IF BASE 0\r\nISOUSC 30 9\r\nBASE 002565285 ,\r\nPTEC TH.. $\
 ```
 
 The expected output on the server is :
-```python
-{'IINST': '002', 'OPTARIF': 'BASE', 'ADCO': '200000294579',
-'MOTDETAT': '000000', 'PAPP': '00420', 'BASE': '002565285',
-'IMAX': '030', 'PTEC': 'TH..', 'ISOUSC': '30'}
+```json
+{"IINST": "002", "OPTARIF": "BASE", "ADCO": "200000294579", "MOTDETAT": "000000",
+ "PAPP": "00420", "BASE": "002565285", "IMAX": "030", "timestamp": 1421919714,
+"PTEC": "TH..", "ISOUSC": "30"}
 ```
 
-Server still accept further datagrams
+Server still accept further datagrams.
