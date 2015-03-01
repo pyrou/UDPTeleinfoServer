@@ -16,7 +16,7 @@ class TeleinfoParser:
 
 	def parse (self, message):
 		"""Read and verify Teleinfo datagram and return it as a dict"""
-		trames = [trame.split(" ") for trame in message.strip("\r\n\x03\x02").split("\r\n")]
+		trames = [trame.split(" ", 2) for trame in message.strip("\r\n\x03\x02").split("\r\n")]
 		return dict([
 			[trame[0], int(trame[1]) if trame[0] in self.integerKeys else trame[1]] for trame in trames
 			if (len(trame) == 3) and (self.checksum(trame[0],trame[1]) == trame[2])
