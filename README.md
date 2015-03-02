@@ -39,9 +39,9 @@ IF BASE 0\r\nISOUSC 30 9\r\nBASE 002565285 ,\r\nPTEC TH.. $\
 
 The expected output on the server is :
 ```json
-{"IINST": "002", "OPTARIF": "BASE", "ADCO": "200000294579", "MOTDETAT": "000000",
- "PAPP": "00420", "BASE": "002565285", "IMAX": "030", "timestamp": 1421919714,
-"PTEC": "TH..", "ISOUSC": "30"}
+{"IINST": 2, "OPTARIF": "BASE", "ADCO": "200000294579", "MOTDETAT": "000000",
+ "PAPP": 420, "BASE": 2565285, "IMAX": 30, "timestamp": 1421919714,
+"PTEC": "TH..", "ISOUSC": 30}
 ```
 
 Server still accept further datagrams.
