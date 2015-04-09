@@ -1,5 +1,7 @@
 # UDPTeleinfoServer
 
+[![Code Climate](https://codeclimate.com/github/pyrou/UDPTeleinfoServer/badges/gpa.svg)](https://codeclimate.com/github/pyrou/UDPTeleinfoServer)
+
 UDP server that is listening for raw "Teleinfo" (EDF) datagrams
 
 ## Usage
