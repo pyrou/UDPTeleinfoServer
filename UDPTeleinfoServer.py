@@ -54,7 +54,7 @@ def main(argv):
 	server = UDPTeleinfoServer(port=port, host=host, wait_delay=wait);
 	try:
 		while True:
-			print(server.read())
+			print(json.dumps(server.read()))
 	except KeyboardInterrupt:
 		server.close();
 		pass
@@ -80,7 +80,7 @@ class UDPTeleinfoServer:
 
 		data = self.parser.parse(message)
 		data['timestamp'] = self.last = int(time.time())
-		return json.dumps(data)
+		return data
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
