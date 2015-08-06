@@ -21,7 +21,7 @@ Options:
 
 ## Example
 
-On the server, run foolowing command :
+On the server, run following command :
 
 ```bash
 # python ./UDPTeleinfoServer.py -p 8000 -w 5
