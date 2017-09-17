@@ -75,7 +75,7 @@ class UDPTeleinfoServer:
 	def read (self):
 		"""Read and verify Teleinfo datagram and return it as a dict"""
 		message, address = self.sock.recvfrom(1024)
-		if self.wait_delay > 0 and int(time.time()) - self.last < self.wait_delay:
+		if self.wait_delay > 0 and int(time.time()) - self.last <= self.wait_delay:
 			return self.read()
 
 		data = self.parser.parse(message)
